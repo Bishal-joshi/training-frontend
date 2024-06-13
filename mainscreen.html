@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <style>
+        body{
+            background-color: #333;
+        }
+        /* CSS for the navigation bar */
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s; /* Add transition effect */
+        }
+
+        nav a:hover {
+            background-color: #555; /* Change background color on hover */
+        }
+
+        /* Apply a background color when an item is clicked */
+        nav a.active {
+            background-color: #4CAF50;
+        }
+
+        /* Adjust the iframe to fill the remaining space */
+        #contentFrame {
+            width: 100%;
+            height: calc(100vh - 15vh); /* Adjusted height to accommodate the navigation bar */
+            border: none; /* Remove iframe border */
+        }
+
+        /* Style for the username */
+        #username {
+            float: right;
+            padding: 14px 20px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" onclick="navigateToHome()" id="homeLink" class="active">Home</a>
+        <a href="#" onclick="navigateToProfile()" id="profileLink">Profile</a>
+        <span id="username"></span>
+    </nav>
+    <br><br>
+    <iframe id="contentFrame" src="homepage.html" frameborder="0"></iframe>
+
+    <script>
+        // Function to set the username
+        function setUsername() {
+            // Retrieve the username from localStorage
+            var username = localStorage.getItem("training") ? JSON.parse(localStorage.getItem("training")).user.name : "";
+            // Set the username in the span element
+            document.getElementById("username").textContent = username;
+        }
+
+        // Call the setUsername function when the page loads
+        window.onload = function() {
+            setUsername();
+        };
+
+        function navigateToHome() {
+            document.getElementById("contentFrame").src = "homepage.html";
+            document.getElementById("homeLink").classList.add("active");
+            document.getElementById("profileLink").classList.remove("active");
+        }
+
+        function navigateToProfile() {
+            document.getElementById("contentFrame").src = "profile.html";
+            document.getElementById("homeLink").classList.remove("active");
+            document.getElementById("profileLink").classList.add("active");
+        }
+    </script>
+</body>
+</html>

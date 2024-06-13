@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+        }
+        .login {
+            background-color: #4caf50;
+            color: white;
+        }
+        .register {
+            background-color: #008CBA;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome!</h1>
+        <p>Do you have an account?</p>
+        <a href="login.html" class="button login">Login</a>
+        <p>Don't have an account yet?</p>
+        <a href="registration.html" class="button register">Register</a>
+    </div>
+</body>
+</html>
+
+<!-- 
+
+bishal@bishal-ThinkPad-P14s-Gen-3:~/Desktop/training/security/trainingexample/OWASP$ sudo ufw status
+[sudo] password for bishal: 
+Status: active
+bishal@bishal-ThinkPad-P14s-Gen-3:~/Desktop/training/security/trainingexample/OWASP$ sudo ufw allow 8888/tcp
+Rule added
+Rule added (v6) 
+python3 -m http.server 8888
+
+sudo ufw allow 8000/tcp
+sudo ufw allow 8888/tcp
+
+-->
