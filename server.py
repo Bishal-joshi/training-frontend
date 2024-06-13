@@ -8,7 +8,7 @@ class MyHandler(SimpleHTTPRequestHandler):
         SimpleHTTPRequestHandler.end_headers(self)
 
 
-def run(server_class=HTTPServer, handler_class=MyHandler, addr="192.168.10.81", port=8001):
+def run(server_class=HTTPServer, handler_class=MyHandler, addr="192.168.1.104", port=8001):
     server_address = (addr, port)
     httpd = server_class(server_address, handler_class)
     print(f"Starting server on {addr}:{port}")

@@ -129,37 +129,14 @@
             }
         }
 
-        // Function to create a new post
-        function createPost() {
-            var postContent = document.getElementById("post-content").value;
-            // Assuming you have an API endpoint to create posts
-            fetch("http://192.168.10.81:8000/socialmedia/post", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization":"Bearer "+token
-                },
-                body: JSON.stringify({ content: postContent,is_public:false })
-            })
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-                console.log(data)
-                // Refresh post list after successful post creation
-                fetchPosts();
-            })
-            .catch(error => {
-                console.error("Error:", error.message);
-            });
-        }
+      
 
         // Function to fetch and display posts
         function fetchPosts() {
-            const training = JSON.parse(localStorage.getItem("training"));
-            var user_id=training["user"]["id"]
+            const urlParams = new URLSearchParams(window.location.search);
+            const userEmail = urlParams.get('user');
             // Assuming you have an API endpoint to fetch posts
-            fetch(`http://192.168.10.81:8000/socialmedia/posts/${user_id}`,
+            fetch(`http://192.168.1.104:8000/socialmedia/posts/${userEmail}`,
             {
                 headers: {
                     "Content-Type": "application/json",
@@ -261,7 +238,7 @@
         // Function to handle liking a post
         function likePost(postId) {
             console.log(token)
-            fetch(`http://192.168.10.81:8000/socialmedia/like/${postId}`, {
+            fetch(`http://192.168.1.104:8000/socialmedia/like/${postId}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -283,7 +260,7 @@
 
         // Function to add a comment to a post
         function addComment(postId, commentContent) {
-            fetch(`http://192.168.10.81:8000/socialmedia/comment/${postId}`, {
+            fetch(`http://192.168.1.104:8000/socialmedia/comment/${postId}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

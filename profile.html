@@ -111,7 +111,7 @@
 
      
         <div class="post-form">
-            <textarea id="post-content" placeholder="Write your post here..." rows="4" required></textarea>
+            <textarea id="post-content" placeholder="Write your private post here..." rows="4" required></textarea>
             <button onclick="createPost()">Post</button>
         </div>
 
@@ -140,13 +140,13 @@
         function createPost() {
             var postContent = document.getElementById("post-content").value;
             // Assuming you have an API endpoint to create posts
-            fetch("http://192.168.10.81:8000/socialmedia/post", {
+            fetch("http://192.168.1.104:8000/socialmedia/post", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization":"Bearer "+token
                 },
-                body: JSON.stringify({ content: postContent,is_public:true })
+                body: JSON.stringify({ content: postContent,is_public:false })
             })
             .then(response => {
                 return response.json();
@@ -166,7 +166,7 @@
             const training = JSON.parse(localStorage.getItem("training"));
             var user_id=training["user"]["id"]
             // Assuming you have an API endpoint to fetch posts
-            fetch(`http://192.168.10.81:8000/socialmedia/posts/${user_id}`,
+            fetch(`http://192.168.1.104:8000/socialmedia/posts/${user_id}`,
             {
                 headers: {
                     "Content-Type": "application/json",
@@ -223,12 +223,15 @@
 
                     // Iterate over comments array and create elements for each comment
                     post.comments.forEach(comment => {
+                        commentsSection.innerHTML=commentsSection.innerHTML+`
+                         <p class="post-content">${comment.user}: ${comment.content}</p>
+                        `
                         // Create a paragraph element for the comment
-                        const commentElement = document.createElement("p");
-                        // Set the text content of the comment element
-                        commentElement.textContent = `${comment.user}: ${comment.content}`;
-                        // Append the comment element to the comments section
-                        commentsSection.appendChild(commentElement);
+                        // const commentElement = document.createElement("p");
+                        // // Set the text content of the comment element
+                        // commentElement.textContent = `${comment.user}: ${comment.content}`;
+                        // // Append the comment element to the comments section
+                        // commentsSection.appendChild(commentElement);
                     });
 
                     // Append comments section to the post card
@@ -268,7 +271,7 @@
         // Function to handle liking a post
         function likePost(postId) {
             console.log(token)
-            fetch(`http://192.168.10.81:8000/socialmedia/like/${postId}`, {
+            fetch(`http://192.168.1.104:8000/socialmedia/like/${postId}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -290,7 +293,7 @@
 
         // Function to add a comment to a post
         function addComment(postId, commentContent) {
-            fetch(`http://192.168.10.81:8000/socialmedia/comment/${postId}`, {
+            fetch(`http://192.168.1.104:8000/socialmedia/comment/${postId}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
